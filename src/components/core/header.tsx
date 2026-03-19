@@ -1,7 +1,7 @@
 import { Link } from '@tanstack/react-router'
 import Container from './container'
 import { motion } from 'motion/react'
-import { GithubLogoIcon } from '@phosphor-icons/react'
+import { GithubLogoIcon, XLogoIcon } from '@phosphor-icons/react'
 
 export function Header() {
   const navItems = [
@@ -30,7 +30,7 @@ export function Header() {
               whileHover="hover"
               transition={{ type: 'spring', stiffness: 300, damping: 30 }}
             >
-              <span className="relative z-10 mix-blend-difference">
+              <span className="relative z-10 mix-blend-difference text-white">
                 {item.label}
               </span>
               <motion.div
@@ -55,8 +55,32 @@ export function Header() {
             whileHover="hover"
             transition={{ type: 'spring', stiffness: 300, damping: 30 }}
           >
-            <span className="relative z-10 mix-blend-difference">
+            <span className="relative z-10 mix-blend-difference text-white">
               <GithubLogoIcon size={16} weight="bold" />
+            </span>
+            <motion.div
+              variants={{
+                initial: {
+                  rotate: 20,
+                  y: '150%',
+                },
+                hover: {
+                  rotate: 0,
+                  y: '0%',
+                },
+              }}
+              className="absolute inset-0 bg-primary"
+            />
+          </MotionLink>
+          <MotionLink
+            to={'https://x.com/radiumcoders'}
+            className="p-2 h-full size-12 flex items-center justify-center relative overflow-hidden"
+            initial="initial"
+            whileHover="hover"
+            transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+          >
+            <span className="relative z-10 mix-blend-difference text-white">
+              <XLogoIcon size={16} weight="bold" />
             </span>
             <motion.div
               variants={{
