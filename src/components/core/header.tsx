@@ -1,3 +1,53 @@
+import { Link } from '@tanstack/react-router'
+import Container from './container'
+import { motion } from 'motion/react'
+
 export function Header() {
-  return <header className="h-16 w-full bg-red-500">hehehehhehe</header>
+  const navItems = [
+    {
+      label: '_Stacks',
+      href: '/stacks',
+    },
+  ]
+  const MotionLink = motion.create(Link)
+  return (
+    <header className="h-16 w-full border-border border-b">
+      <Container className=" h-full flex items-center justify-between">
+        <div id="logo" className="text-2xl uppercase font-heading font-bold">
+          <Link to="/">_DevStack</Link>
+        </div>
+        <div
+          id="rignt side"
+          className="text-xs uppercase font-body font-bold h-full flex items-center justify-center"
+        >
+          {navItems.map((item) => (
+            <MotionLink
+              key={item.href}
+              to={item.href}
+              className="p-2 h-full flex items-center justify-center relative overflow-hidden"
+              initial="initial"
+              whileHover="hover"
+            >
+              <span className="relative z-10 mix-blend-difference">
+                {item.label}
+              </span>
+              <motion.div
+                variants={{
+                  initial: {
+                    rotate: 40,
+                    y: '150%',
+                  },
+                  hover: {
+                    rotate: 0,
+                    y: '0%',
+                  },
+                }}
+                className="absolute inset-0 bg-primary"
+              />
+            </MotionLink>
+          ))}
+        </div>
+      </Container>
+    </header>
+  )
 }
