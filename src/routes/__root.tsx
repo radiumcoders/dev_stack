@@ -11,6 +11,7 @@ import { TanStackDevtools } from '@tanstack/react-devtools'
 import appCss from '../styles.css?url'
 import { Toaster } from '../components/ui/sonner'
 import { Header } from '../components/core/header'
+import Container from '#/components/core/container'
 
 const THEME_INIT_SCRIPT = `(function(){try{var stored=window.localStorage.getItem('theme');var mode=(stored==='light'||stored==='dark')?stored:'dark';var root=document.documentElement;root.classList.remove('light','dark');root.classList.add(mode);root.setAttribute('data-theme',mode);root.style.colorScheme=mode;}catch(e){}})();`
 
@@ -56,9 +57,11 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
         <HeadContent />
       </head>
-      <body className="font-body antialiased bg-background text-foreground ">
+      <body className="font-body antialiased bg-background text-foreground">
         <Header />
-        {children}
+        <main className="min-h-[calc(100vh-4rem)]">
+          <Container>{children}</Container>
+        </main>
         <Toaster />
         <TanStackDevtools
           config={{

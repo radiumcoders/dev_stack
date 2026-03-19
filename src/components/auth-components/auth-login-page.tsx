@@ -1,4 +1,4 @@
-import { AuthDivider } from '#/components/auth-divider'
+import { AuthDivider } from '#/components/auth-components/auth-divider'
 import { Button } from '#/components/ui/button'
 import { DecorIcon } from '#/components/ui/decor-icon'
 import {
@@ -15,6 +15,7 @@ import {
   SignInIcon,
 } from '@phosphor-icons/react'
 import { useForm } from '@tanstack/react-form-start'
+import { Link } from '@tanstack/react-router'
 import { toast } from 'sonner'
 import { z } from 'zod'
 
@@ -22,22 +23,19 @@ export function AuthPage() {
   const formSchema = z.object({
     email: z.email('invalid email address'),
     password: z.string().min(8),
-    name: z.string().min(1),
   })
   const form = useForm({
     defaultValues: {
       email: '',
       password: '',
-      name: '',
     },
     validators: {
       onSubmit: formSchema,
     },
     onSubmit: async ({ value }) => {
-      const { error } = await authClient.signUp.email({
+      const { error } = await authClient.signIn.email({
         email: value.email,
         password: value.password,
-        name: value.name,
         callbackURL: '/',
       })
       if (error) {
@@ -49,7 +47,7 @@ export function AuthPage() {
     },
   })
   return (
-    <div className="relative flex h-screen w-full items-center justify-center overflow-hidden px-6 md:px-8">
+    <div className="relative flex min-h-[calc(100vh-4rem)] w-full items-center justify-center overflow-hidden px-6 md:px-8">
       <div
         className={cn(
           'relative flex w-full max-w-sm flex-col justify-between p-6 md:p-8',
@@ -62,14 +60,13 @@ export function AuthPage() {
         <div className="absolute -inset-x-6 -bottom-px h-px bg-border" />
         <DecorIcon position="top-left" />
         <DecorIcon position="bottom-right" />
-
         <div className="w-full max-w-sm animate-in space-y-8">
           <div className="flex flex-col space-y-1">
             <h1 className="font-bold text-2xl tracking-wide font-heading">
-              Join Now!
+              Log In
             </h1>
             <p className="text-base text-muted-foreground">
-              create your _devStack account.
+              login to your _devStack account.
             </p>
           </div>
           <div className="space-y-4">
@@ -81,23 +78,6 @@ export function AuthPage() {
                 form.handleSubmit()
               }}
             >
-              <form.Field name="name">
-                {(field) => (
-                  <InputGroup>
-                    <InputGroupInput
-                      name={field.name}
-                      value={field.state.value}
-                      onBlur={field.handleBlur}
-                      onChange={(e) => field.handleChange(e.target.value)}
-                      placeholder="Tony Stark"
-                      type="text"
-                    />
-                    <InputGroupAddon align="inline-start">
-                      <SignInIcon size={16} weight="bold" />
-                    </InputGroupAddon>
-                  </InputGroup>
-                )}
-              </form.Field>
               <form.Field name="email">
                 {(field) => (
                   <InputGroup>
@@ -149,6 +129,14 @@ export function AuthPage() {
               </Button>
             </div>
           </div>
+        </div>
+        <div className="mt-4 text-center">
+          <p className="text-sm text-muted-foreground">
+            Don't have an account?{' '}
+            <Link to="/auth/signIn" className="underline">
+              Sign In
+            </Link>
+          </p>
         </div>
       </div>
     </div>

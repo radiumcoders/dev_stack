@@ -5,6 +5,18 @@
 @import "@fontsource/barlow-condensed";
 @import "@fontsource/barlow";
 @import "@fontsource/ibm-plex-mono";
+@import "@fontsource-variable/playfair-display";
+@import "@fontsource-variable/source-serif-4";
+@import "@fontsource-variable/jetbrains-mono";
+@import "@fontsource-variable/space-grotesk";
+@import "@fontsource-variable/dm-sans";
+@import "@fontsource-variable/fira-code";
+@import "@fontsource-variable/bricolage-grotesque";
+@import "@fontsource-variable/figtree";
+@import "@fontsource-variable/inter-tight";
+@import "@fontsource-variable/open-sans";
+@import "@fontsource-variable/geist";
+@import "@fontsource-variable/geist-mono";
 
 @custom-variant dark (&:is(.dark *));
 @plugin "@tailwindcss/typography";
@@ -128,12 +140,24 @@ body,
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
-  --font-heading: var(--font-barlow-condensed);
-  --font-body: var(--font-barlow);
-  --font-mono: var(--font-ibm-plex-mono);
+  --font-heading: var(--font-geist);
+  --font-body: var(--font-geist);
+  --font-mono: var(--font-geist-mono);
   --font-barlow-condensed: Barlow Condensed;
   --font-barlow: Barlow;
   --font-ibm-plex-mono: IBM Plex Mono;
+  --font-playfair-display: Playfair Display Variable;
+  --font-source-serif-4: Source Serif 4 Variable;
+  --font-jetbrains-mono: JetBrains Mono Variable;
+  --font-space-grotesk: Space Grotesk Variable;
+  --font-dm-sans: DM Sans Variable;
+  --font-fira-code: Fira Code Variable;
+  --font-bricolage-grotesque: Bricolage Grotesque Variable;
+  --font-figtree: Figtree Variable;
+  --font-inter-tight: Inter Tight Variable;
+  --font-open-sans: Open Sans Variable;
+  --font-geist: Geist Variable;
+  --font-geist-mono: Geist Mono Variable;
 }
 
 @layer base {
@@ -144,28 +168,28 @@ body,
     @apply bg-background text-foreground;
   }
   html {
-    @apply font-ibm-plex-mono;
+    @apply font-geist-mono;
   }
   h1 {
     font-family: var(--font-heading);
     font-size: 2.25rem;
     line-height: 1.15;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.025em;
     font-weight: 700;
   }
   h2 {
     font-family: var(--font-heading);
     font-size: 1.875rem;
     line-height: 1.2;
-    letter-spacing: -0.025em;
+    letter-spacing: -0.02em;
     font-weight: 600;
   }
   h3 {
     font-family: var(--font-heading);
     font-size: 1.5rem;
-    line-height: 1.25;
-    letter-spacing: -0.02em;
-    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: -0.015em;
+    font-weight: 500;
   }
   h4, h5, h6 {
     font-family: var(--font-heading);

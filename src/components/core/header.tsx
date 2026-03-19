@@ -1,9 +1,39 @@
 import { Link } from '@tanstack/react-router'
 import Container from './container'
 import { motion } from 'motion/react'
-import { GithubLogoIcon, XLogoIcon } from '@phosphor-icons/react'
+import { useState, useEffect } from 'react'
+import {
+  GithubLogoIcon,
+  XLogoIcon,
+  Sun,
+  Moon,
+  SignOut,
+  SignIn,
+  UserPlus,
+} from '@phosphor-icons/react'
+import { authClient } from '#/lib/auth-client'
 
 export function Header() {
+  const { data: session } = authClient.useSession()
+  const [theme, setTheme] = useState<'light' | 'dark'>('dark')
+
+  useEffect(() => {
+    const root = document.documentElement
+    setTheme(root.classList.contains('dark') ? 'dark' : 'light')
+  }, [])
+
+  const toggleTheme = () => {
+    const root = document.documentElement
+    const isDark = root.classList.contains('dark')
+    const newTheme = isDark ? 'light' : 'dark'
+    root.classList.remove('light', 'dark')
+    root.classList.add(newTheme)
+    root.setAttribute('data-theme', newTheme)
+    root.style.colorScheme = newTheme
+    window.localStorage.setItem('theme', newTheme)
+    setTheme(newTheme)
+  }
+
   const navItems = [
     {
       label: '_Stacks',
@@ -11,11 +41,12 @@ export function Header() {
     },
   ]
   const MotionLink = motion.create(Link)
+  const MotionButton = motion.create('button')
   return (
-    <header className="h-16 w-full border-border border-b">
+    <header className="sticky top-0 z-50 h-16 w-full border-border border-b bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
       <Container className=" h-full flex items-center justify-between">
-        <div id="logo" className="text-2xl uppercase font-heading font-bold">
-          <Link to="/">_DevStack</Link>
+        <div id="logo" className="text-xl uppercase font-heading font-bold">
+          <Link to="/">Dev Stack</Link>
         </div>
         <div
           id="rignt side"
@@ -96,6 +127,91 @@ export function Header() {
               className="absolute inset-0 bg-primary"
             />
           </MotionLink>
+
+          <MotionButton
+            onClick={toggleTheme}
+            className="p-2 h-full size-12 flex items-center justify-center relative overflow-hidden cursor-pointer"
+            initial="initial"
+            whileHover="hover"
+            transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+          >
+            <span className="relative z-10 mix-blend-difference text-white">
+              {theme === 'dark' ? (
+                <Sun size={16} weight="bold" />
+              ) : (
+                <Moon size={16} weight="bold" />
+              )}
+            </span>
+            <motion.div
+              variants={{
+                initial: { rotate: 20, y: '150%' },
+                hover: { rotate: 0, y: '0%' },
+              }}
+              className="absolute inset-0 bg-primary"
+            />
+          </MotionButton>
+
+          {session ? (
+            <MotionButton
+              onClick={async () => {
+                await authClient.signOut()
+              }}
+              className="p-2 h-full size-12 flex items-center justify-center relative overflow-hidden cursor-pointer"
+              initial="initial"
+              whileHover="hover"
+              transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+            >
+              <span className="relative z-10 mix-blend-difference text-white">
+                <SignOut size={16} weight="bold" />
+              </span>
+              <motion.div
+                variants={{
+                  initial: { rotate: 20, y: '150%' },
+                  hover: { rotate: 0, y: '0%' },
+                }}
+                className="absolute inset-0 bg-primary"
+              />
+            </MotionButton>
+          ) : (
+            <>
+              <MotionLink
+                to={'/auth/login'}
+                className="p-2 h-full size-12 flex items-center justify-center relative overflow-hidden cursor-pointer"
+                initial="initial"
+                whileHover="hover"
+                transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+              >
+                <span className="relative z-10 mix-blend-difference text-white">
+                  <SignIn size={16} weight="bold" />
+                </span>
+                <motion.div
+                  variants={{
+                    initial: { rotate: 20, y: '150%' },
+                    hover: { rotate: 0, y: '0%' },
+                  }}
+                  className="absolute inset-0 bg-primary"
+                />
+              </MotionLink>
+              <MotionLink
+                to={'/auth/signIn'}
+                className="p-2 h-full size-12 flex items-center justify-center relative overflow-hidden cursor-pointer"
+                initial="initial"
+                whileHover="hover"
+                transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+              >
+                <span className="relative z-10 mix-blend-difference text-white">
+                  <UserPlus size={16} weight="bold" />
+                </span>
+                <motion.div
+                  variants={{
+                    initial: { rotate: 20, y: '150%' },
+                    hover: { rotate: 0, y: '0%' },
+                  }}
+                  className="absolute inset-0 bg-primary"
+                />
+              </MotionLink>
+            </>
+          )}
         </div>
       </Container>
     </header>
