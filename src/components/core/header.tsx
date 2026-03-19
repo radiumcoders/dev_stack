@@ -1,6 +1,7 @@
 import { Link } from '@tanstack/react-router'
 import Container from './container'
 import { motion } from 'motion/react'
+import { GithubLogoIcon } from '@phosphor-icons/react'
 
 export function Header() {
   const navItems = [
@@ -24,9 +25,10 @@ export function Header() {
             <MotionLink
               key={item.href}
               to={item.href}
-              className="p-2 h-full flex items-center justify-center relative overflow-hidden"
+              className="p-2 h-full size-20 flex items-center justify-center relative overflow-hidden"
               initial="initial"
               whileHover="hover"
+              transition={{ type: 'spring', stiffness: 300, damping: 30 }}
             >
               <span className="relative z-10 mix-blend-difference">
                 {item.label}
@@ -34,7 +36,7 @@ export function Header() {
               <motion.div
                 variants={{
                   initial: {
-                    rotate: 40,
+                    rotate: 20,
                     y: '150%',
                   },
                   hover: {
@@ -46,6 +48,30 @@ export function Header() {
               />
             </MotionLink>
           ))}
+          <MotionLink
+            to={'https://github.com/radiumcoders/dev_stack'}
+            className="p-2 h-full size-12 flex items-center justify-center relative overflow-hidden"
+            initial="initial"
+            whileHover="hover"
+            transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+          >
+            <span className="relative z-10 mix-blend-difference">
+              <GithubLogoIcon size={16} weight="bold" />
+            </span>
+            <motion.div
+              variants={{
+                initial: {
+                  rotate: 20,
+                  y: '150%',
+                },
+                hover: {
+                  rotate: 0,
+                  y: '0%',
+                },
+              }}
+              className="absolute inset-0 bg-primary"
+            />
+          </MotionLink>
         </div>
       </Container>
     </header>
