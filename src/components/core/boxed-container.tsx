@@ -1,6 +1,6 @@
 import { cn } from '#/lib/utils'
 
-export default function Container({
+export function BoxedContainer({
   children,
   className,
 }: {
@@ -10,8 +10,8 @@ export default function Container({
   return (
     <div
       className={cn(
-        'sm:max-w-7xl mx-auto border-border border-x bg-background',
         className,
+        'h-fit border-border border my-4 bg-background p-2',
       )}
     >
       {children}

@@ -57,10 +57,21 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
         <HeadContent />
       </head>
-      <body className="font-body antialiased bg-background text-foreground">
+      <body className="font-body antialiased bg-background text-foreground relative">
         <Header />
-        <main className="min-h-[calc(100vh-4rem)]">
-          <Container>{children}</Container>
+
+        <div
+          className="pointer-events-none fixed inset-0 z-0 opacity-10 dark:opacity-15"
+          style={{
+            backgroundImage: 'url(/texture.webp)',
+            backgroundRepeat: 'repeat',
+            backgroundSize: '100px',
+          }}
+        />
+        <main className="min-h-[calc(100vh-4rem)] relative z-10 bg-transparent">
+          <Container className="bg-transparent border-none min-h-[calc(100vh-4rem)]">
+            {children}
+          </Container>
         </main>
         <Toaster />
         <TanStackDevtools

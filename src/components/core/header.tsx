@@ -44,19 +44,22 @@ export function Header() {
   const MotionButton = motion.create('button')
   return (
     <header className="sticky top-0 z-50 h-16 w-full border-border border-b bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
-      <Container className=" h-full flex items-center justify-between">
-        <div id="logo" className="text-xl uppercase font-heading font-bold">
+      <Container className=" h-full flex items-center justify-center md:justify-between px-4 md:px-12 gap-2">
+        <div
+          id="logo"
+          className="hidden md:block text-base md:text-xl uppercase font-heading font-bold whitespace-nowrap shrink-0"
+        >
           <Link to="/">Dev Stack</Link>
         </div>
         <div
           id="rignt side"
-          className="text-xs uppercase font-body font-bold h-full flex items-center justify-center"
+          className="text-xs uppercase font-body font-bold h-full flex items-center justify-center md:justify-end overflow-x-auto w-full md:w-auto"
         >
           {navItems.map((item) => (
             <MotionLink
               key={item.href}
               to={item.href}
-              className="p-2 h-full size-20 flex items-center justify-center relative overflow-hidden"
+              className="p-2 h-full w-16 md:w-20 flex items-center justify-center relative overflow-hidden shrink-0"
               initial="initial"
               whileHover="hover"
               transition={{ type: 'spring', stiffness: 300, damping: 30 }}
@@ -81,7 +84,7 @@ export function Header() {
           ))}
           <MotionLink
             to={'https://github.com/radiumcoders/dev_stack'}
-            className="p-2 h-full size-12 flex items-center justify-center relative overflow-hidden"
+            className="p-2 h-full w-10 md:w-12 flex items-center justify-center relative overflow-hidden shrink-0"
             initial="initial"
             whileHover="hover"
             transition={{ type: 'spring', stiffness: 300, damping: 30 }}
@@ -105,7 +108,7 @@ export function Header() {
           </MotionLink>
           <MotionLink
             to={'https://x.com/radiumcoders'}
-            className="p-2 h-full size-12 flex items-center justify-center relative overflow-hidden"
+            className="p-2 h-full w-10 md:w-12 flex items-center justify-center relative overflow-hidden shrink-0"
             initial="initial"
             whileHover="hover"
             transition={{ type: 'spring', stiffness: 300, damping: 30 }}
@@ -130,7 +133,7 @@ export function Header() {
 
           <MotionButton
             onClick={toggleTheme}
-            className="p-2 h-full size-12 flex items-center justify-center relative overflow-hidden cursor-pointer"
+            className="p-2 h-full w-10 md:w-12 flex items-center justify-center relative overflow-hidden cursor-pointer shrink-0"
             initial="initial"
             whileHover="hover"
             transition={{ type: 'spring', stiffness: 300, damping: 30 }}
@@ -156,7 +159,7 @@ export function Header() {
               onClick={async () => {
                 await authClient.signOut()
               }}
-              className="p-2 h-full size-12 flex items-center justify-center relative overflow-hidden cursor-pointer"
+              className="p-2 h-full w-10 md:w-12 flex items-center justify-center relative overflow-hidden cursor-pointer shrink-0"
               initial="initial"
               whileHover="hover"
               transition={{ type: 'spring', stiffness: 300, damping: 30 }}
@@ -176,7 +179,7 @@ export function Header() {
             <>
               <MotionLink
                 to={'/auth/login'}
-                className="p-2 h-full size-12 flex items-center justify-center relative overflow-hidden cursor-pointer"
+                className="p-2 h-full w-10 md:w-12 flex items-center justify-center relative overflow-hidden cursor-pointer shrink-0"
                 initial="initial"
                 whileHover="hover"
                 transition={{ type: 'spring', stiffness: 300, damping: 30 }}
@@ -194,7 +197,7 @@ export function Header() {
               </MotionLink>
               <MotionLink
                 to={'/auth/signIn'}
-                className="p-2 h-full size-12 flex items-center justify-center relative overflow-hidden cursor-pointer"
+                className="p-2 h-full w-10 md:w-12 flex items-center justify-center relative overflow-hidden cursor-pointer shrink-0"
                 initial="initial"
                 whileHover="hover"
                 transition={{ type: 'spring', stiffness: 300, damping: 30 }}
