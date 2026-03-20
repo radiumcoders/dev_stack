@@ -36,7 +36,7 @@ const GithubSquares = () => {
 
   const squares = Array.from({ length: numSquares })
   return (
-    <div className="w-full h-full grid grid-cols-[repeat(14,1fr)] grid-rows-[repeat(9,1fr)] gap-1.5 p-6">
+    <div className="w-full h-full grid grid-cols-[repeat(14,1fr)] grid-rows-[repeat(9,1fr)] gap-1.5 p-2">
       {squares.map((_, i) => {
         const isActive = activeSquares.has(i)
 
@@ -78,11 +78,11 @@ export function Cards() {
   ]
   return (
     <BoxedContainer>
-      <div className="grid grid-cols-3 gap-2">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
         {cards.map((card, idx) => (
           <div
             key={idx}
-            className="h-112 flex flex-col border border-neutral-200 dark:border-neutral-800 overflow-hidden"
+            className="h-[32rem] flex flex-col border border-neutral-200 dark:border-neutral-800 overflow-hidden"
           >
             <div className="h-2/3 w-full bg-neutral-100 dark:bg-neutral-900 flex items-center justify-center overflow-hidden">
               {card.skeleton}
