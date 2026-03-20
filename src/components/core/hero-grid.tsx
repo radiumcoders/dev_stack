@@ -22,7 +22,7 @@ export function HeroGrid({ className }: { className?: string }) {
           `,
           backgroundSize: '64px 64px, 64px 64px, 128px 128px',
           backgroundPosition: 'center center',
-          opacity: 0.8,
+          opacity: 0.6,
         }}
       />
     </div>

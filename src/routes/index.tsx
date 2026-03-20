@@ -36,13 +36,13 @@ function RouteComponent() {
           <div className="relative z-10 flex flex-col sm:flex-row gap-4 w-full sm:w-auto px-6 sm:px-0">
             <Button
               variant="default"
-              className="w-full sm:w-auto py-6 px-8 text-xl"
+              className="w-full sm:w-auto py-6 px-8 text-xl shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_var(--color-primary)] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[2px_2px_0px_0px_var(--color-primary)] transition-all"
             >
               See Stacks
             </Button>
             <Button
-              variant="outline"
-              className="w-full sm:w-auto py-6 px-8 text-xl"
+              variant="secondary"
+              className="w-full sm:w-auto py-6 px-8 text-xl shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_var(--color-primary)] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[2px_2px_0px_0px_var(--color-primary)] transition-all bg-background border border-border"
             >
               Publish Stack
             </Button>
