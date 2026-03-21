@@ -18,7 +18,7 @@ export function Footer() {
           >
             AI Stack
           </a>
-          Built by
+          Which is Built by
           <a
             href="https://x.com/alperortac"
             className="text-foreground hover:text-foreground/80"
