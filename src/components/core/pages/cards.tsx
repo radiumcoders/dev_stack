@@ -185,18 +185,21 @@ export function Cards() {
             key={idx}
             className="h-full flex flex-col border border-neutral-200 dark:border-neutral-800 overflow-hidden"
           >
-            <div className="h-74 w-full bg-neutral-100 dark:bg-neutral-900 flex items-center justify-center overflow-hidden">
+            <div className="h-32 w-full bg-neutral-100 dark:bg-neutral-900 flex items-center justify-center overflow-hidden">
               {card.skeleton}
             </div>
-            <div className="flex-1 w-full p-6 flex flex-col items-start justify-between">
-              <div className="flex flex-col">
-                <h3 className="font-semibold text-3xl uppercase font-heading">
+            <div className="flex-1 w-full p-8 flex flex-col items-center justify-center text-center border-y border-neutral-200 dark:border-neutral-800">
+              <div className="flex flex-col items-center">
+                <h3 className="font-semibold text-4xl uppercase font-heading">
                   {card.title}
                 </h3>
-                <p className="text-sm text-neutral-500 mt-1 overflow-hidden">
+                <p className="text-base text-neutral-500 mt-3 overflow-hidden">
                   {card.description}
                 </p>
               </div>
+            </div>
+            <div className="h-32 w-full bg-neutral-100 dark:bg-neutral-900 flex items-center justify-center overflow-hidden rotate-180">
+              {card.skeleton}
             </div>
           </div>
         ))}
