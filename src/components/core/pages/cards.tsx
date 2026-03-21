@@ -55,13 +55,114 @@ const GithubSquares = () => {
   )
 }
 
+const Triangles = () => {
+  const numTriangles = 126 // 14 cols * 9 rows
+  const [activeTriangles, setActiveTriangles] = useState<Set<number>>(new Set())
+
+  useEffect(() => {
+    const initial = new Set<number>()
+    for (let i = 0; i < numTriangles; i++) {
+      if (Math.random() > 0.5) initial.add(i)
+    }
+    setActiveTriangles(initial)
+
+    const interval = setInterval(() => {
+      setActiveTriangles((prev) => {
+        const next = new Set(prev)
+        const numToFlip = Math.floor(Math.random() * 5) + 1
+        for (let i = 0; i < numToFlip; i++) {
+          const idx = Math.floor(Math.random() * numTriangles)
+          if (next.has(idx)) next.delete(idx)
+          else next.add(idx)
+        }
+        return next
+      })
+    }, 600)
+    return () => clearInterval(interval)
+  }, [])
+
+  const motif = ['straight', 'flipped', 'flipped', 'straight', 'straight']
+  const triangles = Array.from({ length: numTriangles })
+
+  return (
+    <div className="w-full h-full grid grid-cols-[repeat(14,1fr)] grid-rows-[repeat(9,1fr)] gap-1.5 p-6">
+      {triangles.map((_, i) => {
+        const dir = motif[i % motif.length]
+        const isActive = activeTriangles.has(i)
+        const colorClass = isActive
+          ? 'text-neutral-400 dark:text-neutral-600'
+          : 'text-neutral-200 dark:text-neutral-800'
+
+        return (
+          <svg
+            key={i}
+            viewBox="0 0 100 100"
+            className={`w-full h-full transition-colors duration-700 fill-current ${colorClass} ${
+              dir === 'flipped' ? 'rotate-180' : ''
+            }`}
+          >
+            <polygon points="50,0 100,100 0,100" />
+          </svg>
+        )
+      })}
+    </div>
+  )
+}
+
+const CirclesGrid = () => {
+  const numCircles = 126 // 14 cols * 9 rows
+  const [activeCircles, setActiveCircles] = useState<Set<number>>(new Set())
+
+  useEffect(() => {
+    const initial = new Set<number>()
+    for (let i = 0; i < numCircles; i++) {
+      if (Math.random() > 0.6) initial.add(i)
+    }
+    setActiveCircles(initial)
+
+    const interval = setInterval(() => {
+      setActiveCircles((prev) => {
+        const next = new Set(prev)
+        const numToFlip = Math.floor(Math.random() * 5) + 1
+        for (let i = 0; i < numToFlip; i++) {
+          const idx = Math.floor(Math.random() * numCircles)
+          if (next.has(idx)) next.delete(idx)
+          else next.add(idx)
+        }
+        return next
+      })
+    }, 500)
+    return () => clearInterval(interval)
+  }, [])
+
+  const circles = Array.from({ length: numCircles })
+
+  return (
+    <div className="w-full h-full grid grid-cols-[repeat(14,1fr)] grid-rows-[repeat(9,1fr)] gap-1.5 p-6">
+      {circles.map((_, i) => {
+        const isActive = activeCircles.has(i)
+        return (
+          <div
+            key={i}
+            className={`w-full h-full rounded-full transition-colors duration-700 ${
+              isActive
+                ? 'bg-neutral-400 dark:bg-neutral-600'
+                : 'bg-neutral-200 dark:bg-neutral-800'
+            }`}
+          />
+        )
+      })}
+    </div>
+  )
+}
+
 export function Cards() {
   const cards = [
     {
       title: 'Copy',
       description:
         'Copy the modern technology stack used by the fastest shipping developers. Leverage proven tools and configurations to jumpstart your next big project without reinventing the wheel or wasting time on initial setup.',
-      skeleton: <></>,
+      skeleton: <Triangles />,
     },
     {
       title: 'Build',
@@ -73,7 +174,7 @@ export function Cards() {
       title: 'Ship',
       description:
         'Ship your products faster and more reliably than ever before. Streamline your deployment pipeline and deliver exceptional experiences to your users with lightning speed, ensuring you stay ahead of the competition.',
-      skeleton: <></>,
+      skeleton: <CirclesGrid />,
     },
   ]
   return (
