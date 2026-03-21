@@ -43,8 +43,8 @@ export function Header() {
   const MotionLink = motion.create(Link)
   const MotionButton = motion.create('button')
   return (
-    <header className="sticky top-0 z-50 h-16 w-full border-border border-b bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
-      <Container className=" h-full flex items-center justify-center md:justify-between px-4 md:px-12 gap-2">
+    <header className="sticky top-0 z-50 h-16 w-full ">
+      <Container className="h-full flex items-center justify-center md:justify-between px-4 md:px-12 gap-2 border border-border mt-2">
         <div
           id="logo"
           className="hidden md:block text-base md:text-xl uppercase font-heading font-bold whitespace-nowrap shrink-0"
@@ -59,12 +59,12 @@ export function Header() {
             <MotionLink
               key={item.href}
               to={item.href}
-              className="p-2 h-full w-16 md:w-20 flex items-center justify-center relative overflow-hidden shrink-0"
+              className="group p-2 h-full w-16 md:w-20 flex items-center justify-center relative overflow-hidden shrink-0"
               initial="initial"
               whileHover="hover"
               transition={{ type: 'spring', stiffness: 300, damping: 30 }}
             >
-              <span className="relative z-10 mix-blend-difference text-white">
+              <span className="relative z-10 text-foreground group-hover:text-primary-foreground transition-colors duration-300">
                 {item.label}
               </span>
               <motion.div
@@ -84,12 +84,12 @@ export function Header() {
           ))}
           <MotionLink
             to={'https://github.com/radiumcoders/dev_stack'}
-            className="p-2 h-full w-10 md:w-12 flex items-center justify-center relative overflow-hidden shrink-0"
+            className="group p-2 h-full w-10 md:w-12 flex items-center justify-center relative overflow-hidden shrink-0"
             initial="initial"
             whileHover="hover"
             transition={{ type: 'spring', stiffness: 300, damping: 30 }}
           >
-            <span className="relative z-10 mix-blend-difference text-white">
+            <span className="relative z-10 text-foreground group-hover:text-primary-foreground transition-colors duration-300">
               <GithubLogoIcon size={16} weight="bold" />
             </span>
             <motion.div
@@ -108,12 +108,12 @@ export function Header() {
           </MotionLink>
           <MotionLink
             to={'https://x.com/radiumcoders'}
-            className="p-2 h-full w-10 md:w-12 flex items-center justify-center relative overflow-hidden shrink-0"
+            className="group p-2 h-full w-10 md:w-12 flex items-center justify-center relative overflow-hidden shrink-0"
             initial="initial"
             whileHover="hover"
             transition={{ type: 'spring', stiffness: 300, damping: 30 }}
           >
-            <span className="relative z-10 mix-blend-difference text-white">
+            <span className="relative z-10 text-foreground group-hover:text-primary-foreground transition-colors duration-300">
               <XLogoIcon size={16} weight="bold" />
             </span>
             <motion.div
@@ -133,12 +133,12 @@ export function Header() {
 
           <MotionButton
             onClick={toggleTheme}
-            className="p-2 h-full w-10 md:w-12 flex items-center justify-center relative overflow-hidden cursor-pointer shrink-0"
+            className="group p-2 h-full w-10 md:w-12 flex items-center justify-center relative overflow-hidden cursor-pointer shrink-0"
             initial="initial"
             whileHover="hover"
             transition={{ type: 'spring', stiffness: 300, damping: 30 }}
           >
-            <span className="relative z-10 mix-blend-difference text-white">
+            <span className="relative z-10 text-foreground group-hover:text-primary-foreground transition-colors duration-300">
               {theme === 'dark' ? (
                 <Sun size={16} weight="bold" />
               ) : (
@@ -159,12 +159,12 @@ export function Header() {
               onClick={async () => {
                 await authClient.signOut()
               }}
-              className="p-2 h-full w-10 md:w-12 flex items-center justify-center relative overflow-hidden cursor-pointer shrink-0"
+              className="group p-2 h-full w-10 md:w-12 flex items-center justify-center relative overflow-hidden cursor-pointer shrink-0"
               initial="initial"
               whileHover="hover"
               transition={{ type: 'spring', stiffness: 300, damping: 30 }}
             >
-              <span className="relative z-10 mix-blend-difference text-white">
+              <span className="relative z-10 text-foreground group-hover:text-primary-foreground transition-colors duration-300">
                 <SignOut size={16} weight="bold" />
               </span>
               <motion.div
@@ -179,12 +179,12 @@ export function Header() {
             <>
               <MotionLink
                 to={'/auth/login'}
-                className="p-2 h-full w-10 md:w-12 flex items-center justify-center relative overflow-hidden cursor-pointer shrink-0"
+                className="group p-2 h-full w-10 md:w-12 flex items-center justify-center relative overflow-hidden cursor-pointer shrink-0"
                 initial="initial"
                 whileHover="hover"
                 transition={{ type: 'spring', stiffness: 300, damping: 30 }}
               >
-                <span className="relative z-10 mix-blend-difference text-white">
+                <span className="relative z-10 text-foreground group-hover:text-primary-foreground transition-colors duration-300">
                   <SignIn size={16} weight="bold" />
                 </span>
                 <motion.div
@@ -197,12 +197,12 @@ export function Header() {
               </MotionLink>
               <MotionLink
                 to={'/auth/signIn'}
-                className="p-2 h-full w-10 md:w-12 flex items-center justify-center relative overflow-hidden cursor-pointer shrink-0"
+                className="group p-2 h-full w-10 md:w-12 flex items-center justify-center relative overflow-hidden cursor-pointer shrink-0"
                 initial="initial"
                 whileHover="hover"
                 transition={{ type: 'spring', stiffness: 300, damping: 30 }}
               >
-                <span className="relative z-10 mix-blend-difference text-white">
+                <span className="relative z-10 text-foreground group-hover:text-primary-foreground transition-colors duration-300">
                   <UserPlus size={16} weight="bold" />
                 </span>
                 <motion.div

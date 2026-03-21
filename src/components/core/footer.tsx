@@ -1,25 +1,6 @@
-import { Link } from '@tanstack/react-router'
-import { useEffect, useState } from 'react'
+import { HeartIcon } from '@phosphor-icons/react'
 
 export function Footer() {
-  const [time, setTime] = useState<string>('...')
-
-  useEffect(() => {
-    const updateTime = () => {
-      const timeString = new Date().toLocaleTimeString('en-US', {
-        timeZone: 'Asia/Kolkata',
-        hour: 'numeric',
-        minute: '2-digit',
-        second: '2-digit',
-        hour12: true,
-      })
-      setTime(`${timeString} IST`)
-    }
-    updateTime()
-    const interval = setInterval(updateTime, 1000)
-    return () => clearInterval(interval)
-  }, [])
-
   return (
     <footer className="w-full bg-background text-muted-foreground pt-12 px-6 md:px-12 flex flex-col overflow-hidden border  border-border dark">
       {/* Top Section: Copyright & Links */}
@@ -45,17 +26,15 @@ export function Footer() {
             Alper Ortac
           </a>
         </div>
-
-        <div className="flex flex-col md:text-right gap-1.5">
-          <p>Based in</p>
-          <p>India</p>
-        </div>
+        <p className="flex items-center gap-1">
+          Built with <HeartIcon weight="fill" size={16} /> by RadiumCoders
+        </p>
       </div>
 
       {/* Massive Typography Section */}
       <div className="w-full flex justify-center mt-12 md:mt-0 select-none pointer-events-none">
         <h1
-          className="font-bold tracking-tighter text-foreground"
+          className="font-bold tracking-tighter text-foreground font-heading"
           style={{
             fontSize: 'clamp(4rem, 16vw, 40rem)',
             lineHeight: '0.75',
