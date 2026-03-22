@@ -1,5 +1,6 @@
 import { BoxedContainer } from '#/components/core/boxed-container'
 import { Button } from '#/components/ui/button'
+import { toast } from 'sonner'
 import { motion } from 'motion/react'
 
 export function Hero() {
@@ -34,6 +35,9 @@ export function Hero() {
             See Stacks
           </Button>
           <Button
+            onClick={() => {
+              toast.success('Stack published successfully!')
+            }}
             variant="secondary"
             className="w-full sm:w-auto py-6 px-8 text-xl shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_var(--color-primary)] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[2px_2px_0px_0px_var(--color-primary)] transition-all bg-background border border-border"
           >

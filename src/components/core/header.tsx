@@ -1,17 +1,16 @@
-import { Link } from '@tanstack/react-router'
-import Container from './container'
-import { motion } from 'motion/react'
-import { useState, useEffect } from 'react'
+import { AuthDialog } from '#/components/auth-components/auth-dialog'
+import { authClient } from '#/lib/auth-client'
 import {
   GithubLogoIcon,
+  MoonIcon,
+  SignOutIcon,
+  SunIcon,
   XLogoIcon,
-  Sun,
-  Moon,
-  SignOut,
-  SignIn,
-  UserPlus,
 } from '@phosphor-icons/react'
-import { authClient } from '#/lib/auth-client'
+import { Link } from '@tanstack/react-router'
+import { motion } from 'motion/react'
+import { useEffect, useState } from 'react'
+import Container from './container'
 
 export function Header() {
   const { data: session } = authClient.useSession()
@@ -140,9 +139,9 @@ export function Header() {
           >
             <span className="relative z-10 text-foreground group-hover:text-primary-foreground transition-colors duration-300">
               {theme === 'dark' ? (
-                <Sun size={16} weight="bold" />
+                <SunIcon size={16} weight="bold" />
               ) : (
-                <Moon size={16} weight="bold" />
+                <MoonIcon size={16} weight="bold" />
               )}
             </span>
             <motion.div
@@ -165,7 +164,7 @@ export function Header() {
               transition={{ type: 'spring', stiffness: 300, damping: 30 }}
             >
               <span className="relative z-10 text-foreground group-hover:text-primary-foreground transition-colors duration-300">
-                <SignOut size={16} weight="bold" />
+                <SignOutIcon size={16} weight="bold" />
               </span>
               <motion.div
                 variants={{
@@ -176,44 +175,7 @@ export function Header() {
               />
             </MotionButton>
           ) : (
-            <>
-              <MotionLink
-                to={'/auth/login'}
-                className="group p-2 h-full w-10 md:w-12 flex items-center justify-center relative overflow-hidden cursor-pointer shrink-0"
-                initial="initial"
-                whileHover="hover"
-                transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-              >
-                <span className="relative z-10 text-foreground group-hover:text-primary-foreground transition-colors duration-300">
-                  <SignIn size={16} weight="bold" />
-                </span>
-                <motion.div
-                  variants={{
-                    initial: { rotate: 20, y: '150%' },
-                    hover: { rotate: 0, y: '0%' },
-                  }}
-                  className="absolute inset-0 bg-primary"
-                />
-              </MotionLink>
-              <MotionLink
-                to={'/auth/signIn'}
-                className="group p-2 h-full w-10 md:w-12 flex items-center justify-center relative overflow-hidden cursor-pointer shrink-0"
-                initial="initial"
-                whileHover="hover"
-                transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-              >
-                <span className="relative z-10 text-foreground group-hover:text-primary-foreground transition-colors duration-300">
-                  <UserPlus size={16} weight="bold" />
-                </span>
-                <motion.div
-                  variants={{
-                    initial: { rotate: 20, y: '150%' },
-                    hover: { rotate: 0, y: '0%' },
-                  }}
-                  className="absolute inset-0 bg-primary"
-                />
-              </MotionLink>
-            </>
+            <AuthDialog />
           )}
         </div>
       </Container>
