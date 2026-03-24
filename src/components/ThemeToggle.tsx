@@ -42,7 +42,11 @@ export default function ThemeToggle() {
 
   return (
     <Button variant={'outline'} size={'icon'} onClick={toggleMode}>
-      {mode === 'dark' ? <MoonIcon size={16} /> : <SunIcon size={16} />}
+      {mode === 'dark' ? (
+        <MoonIcon weight="duotone" size={16} />
+      ) : (
+        <SunIcon weight="duotone" size={16} />
+      )}
     </Button>
   )
 }
