@@ -44,9 +44,7 @@ const GithubSquares = () => {
           <div
             key={i}
             className={`w-5 h-5 rounded-none transition-colors duration-700 ${
-              isActive
-                ? 'bg-neutral-400 dark:bg-neutral-600'
-                : 'bg-neutral-200 dark:bg-neutral-800'
+              isActive ? 'bg-primary/70' : 'bg-primary/20'
             }`}
           />
         )
@@ -89,9 +87,7 @@ const Triangles = () => {
       {triangles.map((_, i) => {
         const dir = motif[i % motif.length]
         const isActive = activeTriangles.has(i)
-        const colorClass = isActive
-          ? 'text-neutral-400 dark:text-neutral-600'
-          : 'text-neutral-200 dark:text-neutral-800'
+        const colorClass = isActive ? 'text-primary/70' : 'text-primary/20'
 
         return (
           <svg
@@ -145,9 +141,7 @@ const CirclesGrid = () => {
           <div
             key={i}
             className={`w-5 h-5 rounded-full transition-colors duration-700 ${
-              isActive
-                ? 'bg-neutral-400 dark:bg-neutral-600'
-                : 'bg-neutral-200 dark:bg-neutral-800'
+              isActive ? 'bg-primary/70' : 'bg-primary/20'
             }`}
           />
         )

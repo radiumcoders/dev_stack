@@ -70,8 +70,8 @@ function RootDocument({ children }: { children: React.ReactNode }) {
               backgroundSize: '100px',
             }}
           />
-          <main className="min-h-[calc(100vh-4rem)] relative z-10 bg-transparent">
-            <Container className="bg-transparent border-none min-h-[calc(100vh-4rem)]">
+          <main className="min-h-[calc(100vh-6rem)] relative z-10 bg-transparent">
+            <Container className="bg-transparent border-none min-h-[calc(100vh-6rem)]">
               {children}
             </Container>
           </main>
