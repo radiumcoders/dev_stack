@@ -64,14 +64,14 @@ function RootDocument({ children }: { children: React.ReactNode }) {
 
           <div
             className="pointer-events-none fixed inset-0 z-0 opacity-10 dark:opacity-15"
-            style={{
-              backgroundImage: 'url(/texture.webp)',
-              backgroundRepeat: 'repeat',
-              backgroundSize: '100px',
-            }}
+            // style={{
+            //   backgroundImage: 'url(/texture.webp)',
+            //   backgroundRepeat: 'repeat',
+            //   backgroundSize: '100px',
+            // }}
           />
           <main className="min-h-[calc(100vh-6rem)] relative z-10 bg-transparent">
-            <Container className="bg-transparent border-none min-h-[calc(100vh-6rem)]">
+            <Container className="bg-transparent min-h-[calc(100vh-6rem)]">
               {children}
             </Container>
           </main>
