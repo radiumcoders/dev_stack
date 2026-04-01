@@ -42,8 +42,11 @@ export function Header() {
   const MotionLink = motion.create(Link)
   const MotionButton = motion.create('button')
   return (
-    <header className="sticky top-0 z-50 h-16 w-full ">
-      <Container className="h-full flex items-center justify-center md:justify-between px-4 md:px-12 gap-2 border border-border mt-2">
+    <header className="sticky top-0 z-50 h-16 w-full border-b border-border">
+      <Container
+        corners
+        className="h-full flex items-center justify-center md:justify-between px-4 md:px-12 gap-2 relative"
+      >
         <div
           id="logo"
           className="hidden md:block text-base md:text-xl uppercase font-heading font-bold whitespace-nowrap shrink-0"
