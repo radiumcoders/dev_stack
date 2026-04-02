@@ -71,9 +71,9 @@ function RootDocument({ children }: { children: React.ReactNode }) {
             // }}
           />
           <main className="min-h-[calc(100vh-6rem)] relative z-10 bg-transparent">
-            <Container className="bg-transparent min-h-[calc(100vh-6rem)]">
-              {children}
-            </Container>
+            {/*<Container className="bg-transparent min-h-[calc(100vh-6rem)]">*/}
+            {children}
+            {/*</Container>*/}
           </main>
           <Toaster />
           <TanStackDevtools

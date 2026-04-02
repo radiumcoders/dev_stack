@@ -1,11 +1,11 @@
-import { BoxedContainer } from '#/components/core/boxed-container'
+import Container from '#/components/core/container'
 import { Button } from '#/components/ui/button'
 import { toast } from 'sonner'
 import { motion } from 'motion/react'
 
 export function Hero() {
   return (
-    <BoxedContainer>
+    <Container corners>
       <div className="h-fit pb-8 sm:pb-16  flex flex-col items-center justify-center relative overflow-hidden">
         {/*<HeroGrid />*/}
         <motion.h1
@@ -45,6 +45,6 @@ export function Hero() {
           </Button>
         </div>
       </div>
-    </BoxedContainer>
+    </Container>
   )
 }

@@ -1,3 +1,6 @@
+import { Footer } from '#/components/core/footer'
+import { Cards } from '#/components/pages/hero-components/cards'
+import { Hero } from '#/components/pages/hero-components/hero'
 import { createFileRoute } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/')({
@@ -7,9 +10,9 @@ export const Route = createFileRoute('/')({
 function RouteComponent() {
   return (
     <>
-      {/*<Hero />
+      <Hero />
       <Cards />
-      <Footer />*/}
+      <Footer />
     </>
   )
 }
